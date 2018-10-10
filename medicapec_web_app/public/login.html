@@ -29,15 +29,19 @@
         <div class="card-header">Iniciar Sesión</div>
         <div class="card-body">
           <form>
-            <div class="form-group">
+            <div class="alert alert-danger alert-dismissible hidden" id="mensajes">
+              <button type="button" class="close hidden" data-dismiss="alert">&times;</button>
+              <p class="hidden" id="mensajeDetalle">Prueba</p>
+            </div>
+             <div class="form-group">
               <div class="form-label-group">
-                <input type="text" id="inputUsuario" class="form-control" placeholder="Usuario" required="required" autofocus="autofocus">
+                <input type="text" id="inputUsuario" class="form-control" placeholder="Usuario" required="required" autofocus="autofocus" data-error="Introduzca su usuario">
                 <label for="inputUsuario">Usuario</label>
               </div>
             </div>
             <div class="form-group">
               <div class="form-label-group">
-                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="required">
+                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="required" autofocus="autofocus" data-error="Introduzca su contraseña">
                 <label for="inputPassword">Contraseña</label>
               </div>
             </div>
@@ -49,7 +53,7 @@
                 </label>
               </div>
             </div>
-            <a class="btn btn-primary btn-block" href="inicioPacientes.html">Entrar</a>
+            <a class="btn btn-primary btn-block" onclick="doLogin();">Entrar</a>
           </form>
           <div class="text-center">
             <a class="d-block small mt-3" href="register.html">No tienes cuenta? Registrate</a>
@@ -64,6 +68,9 @@
 
     <!-- Core plugin JavaScript-->
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Funcionalidad JavaScript-->
+    <script src="js/app/usuario.js"></script>
 
   </body>
 
