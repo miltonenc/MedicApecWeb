@@ -1,5 +1,6 @@
 var baseUrlDMS = "http://localhost:8085/DispensarioMedicoService/api"; ///DispensarioMedicoServiceAPI
 var baseUrl = "http://localhost:3000/";
+var usuarioId;
 
 function doLogin(usuario, passwaord) {
     var pUsuario = document.getElementById("inputUsuario").value;
@@ -7,9 +8,6 @@ function doLogin(usuario, passwaord) {
     var serviceUrl = "/Usuario/Login?pUsuario=" + pUsuario + "&pPassword=" + pPassword;
     
     var endPoint = baseUrlDMS + serviceUrl;
-    var request = new FormData();
-    request.append('pUsuario', pUsuario);
-    request.append('pPassword', pPassword);
 
     $.ajax({
         type: "GET",
@@ -18,6 +16,7 @@ function doLogin(usuario, passwaord) {
 
         success: function (response) {
             if (response.respuesta.codigo === "0") {
+                usuarioId = response.usuario.id;
                 var rol = response.usuario.roles[0];
                 if(rol.codigo == "A"){
                     window.location.href = "/inicioAdmin.html";
