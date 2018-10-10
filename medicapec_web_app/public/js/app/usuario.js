@@ -19,26 +19,16 @@ function doLogin(usuario, passwaord) {
         success: function (response) {
             if (response.respuesta.codigo === "0") {
                 var rol = response.usuario.roles[0];
-                switch(rol.codigo) {
-                    case "A":
-                        window.location.href = "/inicioAdmin.html";
-                        break;
-                    
-                        case "M":
-                        window.location.href = "/inicioMedicos.html";
-                        break;
-                    
-                    case "E", "P", "O":
-                        window.location.href = "/inicioPacientes.html";
-                        break;
-                    
-                    default:
-                        $('#mensajeDetalle').text('El usuario no tiene permisos.');
-                        $('#mensajes').removeClass("hidden");
-                }
                 if(rol.codigo == "A"){
-                    
-                }esle
+                    window.location.href = "/inicioAdmin.html";
+                }else if(rol.codigo == "M"){
+                    window.location.href = "/inicioMedicos.html";
+                }else if(rol.codigo == "E" || rol.codigo == "P" || rol.codigo == "P"){
+                    window.location.href = "/inicioPacientes.html";
+                }else{
+                    $('#mensajeDetalle').text('El usuario no tiene permisos.');
+                    $('#mensajes').removeClass("hidden");
+                }
 
             } else {
                 $('#mensajeDetalle').text('El usuario o la contraseña son invalidos, por favor intentelo nuevamente.');
